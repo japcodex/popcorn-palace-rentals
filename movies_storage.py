@@ -3,7 +3,7 @@
 # Drama 🎭
 # Horror 👻
 # Sci-Fi 🚀
-# Romance ❤️
+# Romance 💕
 # Thriller 😱
 # Adventure 🧭
 # Animation 🎨
@@ -19,7 +19,7 @@ movies = [
     {"name": "A", "genres": "Comedy 😂", "rating": "⭐⭐⭐"},
     {"name": "B", "genres": "Sci-Fi 🚀", "rating": "⭐⭐"},
     {"name": "C", "genres": "Fantasy 🧙", "rating": "⭐⭐"},
-    {"name": "D", "genres": "Romance ❤️", "rating": "⭐⭐"},
+    {"name": "D", "genres": "Romance 💕", "rating": "⭐⭐"},
     {"name": "E", "genres": "Documentary 🎥", "rating": "⭐"},
     {"name": "F", "genres": "Horror 👻", "rating": "⭐⭐⭐"},
 ]
