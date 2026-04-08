@@ -13,7 +13,9 @@ while True:
             clean();
             title("🎬", "Movies");
             storage(movies, "name");
-            print("💁 -Perfect, choose any movie!")
+            print("💁 -Perfect, choose any movie! \nYou can type the movie title or index.")
+
+            new_selec = input("\nType the movie title or number: \n➤ ").upper();
 
         
         case "b":
@@ -50,7 +52,13 @@ while True:
             print("=" * 40);
 
         case "e":
-            ...
+            if (len(inventory) <=0):
+                clean();
+                attendant_message("🙍", "Sorry, but you don´t have any rented movie");
+            elif (len(inventory) >0):
+                clean()
+                title("🎥", "Your Rented Movies");
+                storage_table(inventory);
         
         case "f":
             clean();
