@@ -104,8 +104,23 @@ while True:
         case "d":
             clean();
             title("🔍", "Search");
-            print(*movies, sep="\n");
-            print("=" * 40);
+            print("[a] Search by Name \n[b] Search by Genre \n[c] Search by Rating \n[d] Back");
+            print("=" * width);
+
+            new_selec = input("\nPlease choose an option: \n➤ ").lower();
+
+            if (new_selec == "a"):
+                ...;
+            elif (new_selec == "b"):
+                ...;
+            elif (new_selec == "c"):
+                ...;
+            elif (new_selec == "d"):
+                clean();
+                attendant_message("🙋", "Okay, What would you like?");
+            else:
+                clean();
+                attendant_message("🙍", "Sorry, I don´t urdestand your message. \nTry again, please!");
 
         case "e":
             if (len(inventory) <=0):

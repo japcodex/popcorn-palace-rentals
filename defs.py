@@ -4,9 +4,9 @@ import os;
 #Creating Variables
 company_name = "Popcorn Palace Rentals";
 inventory = [
-    {"name": "Z", "genres": "Drama 🎭", "rating": "⭐"},
+    {"name": "Z", "genres": "Drama 🎭", "rating": "1"},
 ]
-width = 50;
+width = 60;
 
 
 #Creating defs
@@ -37,6 +37,11 @@ def storage(storage, name):
     print("=" * width);
 
 def storage_table(storage):
+    print(f"{'NAME':<30} {'GENRES':<16} {'RATING'}")
+    print("-" * width)
+    
     for index, i in enumerate(storage, start=1):
-        print(f"{index:<4}.", f"{i['name']:<25} {i['genres']:<15} {i['rating']}")
-    print("=" * width);
+        stars = "⭐" * int(i["rating"])
+        print(f"{index:<3}. {i['name']:<25} {i['genres']:<15} {stars:<5}")
+    
+    print("=" * width)
