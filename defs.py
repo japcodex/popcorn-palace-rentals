@@ -6,21 +6,22 @@ company_name = "Popcorn Palace Rentals";
 inventory = [
     {"name": "Z", "genres": "Drama 🎭", "rating": "⭐"},
 ]
+width = 50;
 
 
 #Creating defs
 def title(emoji, text):
-    print("\n" + "=" * 40);
-    print(f"{emoji} {text.center(36).upper()}");
-    print("=" * 40);
+    print("\n" + "=" * width);
+    print(f"{emoji} {text.center(width - 6).upper()}");
+    print("=" * width);
 
 def clean():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def attendant_message(emoji, message):
-    print("=" * 40);
-    print(f"🍿{company_name.center(36).upper()}🍿")
-    print("=" * 40);
+    print("=" * width);
+    print(f"🍿{company_name.center(width - 6).upper()}🍿")
+    print("=" * width);
     print(f"{emoji} -{message}")
     print("""
 [a] Rent a movie
@@ -31,11 +32,11 @@ def attendant_message(emoji, message):
 [f] Exit""");
 
 def storage(storage, name):
-    for i in storage:
-        print(i[f"{name}"]);
-    print("=" * 40);
+    for index, i in enumerate(storage, start=1):
+        print(f"{index}.", i[f"{name}"]);
+    print("=" * width);
 
 def storage_table(storage):
-    for i in storage:
-        print(f"{i['name']:<10} {i['genres']:<20} {i['rating']}")
-    print("=" * 40);
+    for index, i in enumerate(storage, start=1):
+        print(f"{index:<4}.", f"{i['name']:<25} {i['genres']:<15} {i['rating']}")
+    print("=" * width);

@@ -17,6 +17,36 @@ while True:
 
             new_selec = input("\nType the movie title or number: \n➤ ").upper();
 
+            if (new_selec.isdigit()):
+                index = int(new_selec) -1;
+                if (0 <= index < len(movies)):
+                    inventory.append(movies[index]);
+                    del(movies[index]);
+                    clean();
+                    attendant_message("💁", "Thank you for your purchase. \nWhat would you like?");
+                else:
+                    clean();
+                    attendant_message("🙍", "Sorry, but we don´t have this movie. \nTry again, please!");
+            
+            elif (new_selec.isalpha()):
+                for movie in movies:
+                    if (movie["name"].upper() == new_selec):
+                        inventory.append(movie);
+                        movies.remove(movie);
+
+                        clean();
+                        attendant_message("💁", "Thank you for your purchase. \nWhat would you like?");
+                        break;
+                        
+                else:
+                    clean();
+                    attendant_message("🙍", "Sorry, but we don´t have this movie. \nTry again, please!");
+            
+            else:
+                clean();
+                attendant_message("🙍", "Sorry, but we don´t have this movie. \nTry again, please!");
+
+
         
         case "b":
             if (len(inventory) <=0):
@@ -27,7 +57,33 @@ while True:
                 title("🎒", "Your Inventory");
                 storage(inventory, "name");
                 print("💁 -Select the movie you wish to return. \nYou can type the movie title or index.")
-                new_selec = input("\nType the movie title or number: \n➤ ").lower();
+                
+                new_selec = input("\nType the movie title or number: \n➤ ").upper();
+                
+                if (new_selec.isdigit()):
+                    index = int(new_selec) -1;
+                    if (0 <= index < len(inventory)):
+                        movies.append(inventory[index]);
+                        del(inventory[index]);
+                        clean();
+                        attendant_message("💁", "Thank you for your return. \nWhat would you like?");
+                    else:
+                        clean();
+                        attendant_message("🙍", "Sorry, but you don´t have this movie. \nTry again, please!");
+            
+                elif (new_selec.isalpha()):
+                    for inv in inventory:
+                        if (inv["name"].upper() == new_selec):
+                            movies.append(inv);
+                            inventory.remove(inv);
+                    
+                    else:
+                        clean();
+                        attendant_message("🙍", "Sorry, but you don´t have this movie. \nTry again, please!");
+            
+                else:
+                    clean();
+                    attendant_message("🙍", "Sorry, but you don´t have this movie. \nTry again, please!");
 
         case "c":
             clean();
@@ -67,4 +123,4 @@ while True:
 
         case _:
             clean();
-            attendant_message("🙍", "Sorry, I don´t urdestand your message, try again please!");
+            attendant_message("🙍", "Sorry, I don´t urdestand your message. \nTry again, please!");
