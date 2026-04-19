@@ -29,14 +29,15 @@ def attendant_message(emoji, message):
 [c] View available movies
 [d] Search for a movie
 [e] View rented movies
-[f] Exit""");
+[f] Foods & Drinks
+[g] Exit""");
 
 def storage(storage, name):
     for index, i in enumerate(storage, start=1):
         print(f"{index}.", i[f"{name}"]);
     print("=" * width);
 
-def storage_table(storage):
+def movies_storage_table(storage):
     print(f"{'NAME':<30} {'GENRES':<16} {'RATING'}")
     print("-" * width)
     

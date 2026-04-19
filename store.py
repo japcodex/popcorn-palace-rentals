@@ -1,5 +1,6 @@
 #Import library
 from movies_storage import movies;
+from foods_storage import *
 from defs import *
 
 
@@ -12,7 +13,7 @@ while True:
         case "a":
             clean();
             title("🎬", "Movies");
-            storage(movies, "name");
+            movies_storage(movies, "name");
             print("💁 -Perfect, choose any movie! \nYou can type the movie title or index.")
 
             new_selec = input("\nType the movie title or number: \n➤ ").upper();
@@ -55,7 +56,7 @@ while True:
             elif (len(inventory) >0):
                 clean()
                 title("🎒", "Your Inventory");
-                storage(inventory, "name");
+                movies_storage(inventory, "name");
                 print("💁 -Select the movie you wish to return. \nYou can type the movie title or index.")
                 
                 new_selec = input("\nType the movie title or number: \n➤ ").upper();
@@ -88,7 +89,7 @@ while True:
         case "c":
             clean();
             title("📦", "Our Storage");
-            storage_table(movies);
+            movies_storage_table(movies);
             print("💁 -Do you wanna any movie?")
             print("[a] Yes \n[b] No");
 
@@ -129,9 +130,16 @@ while True:
             elif (len(inventory) >0):
                 clean()
                 title("🎥", "Your Rented Movies");
-                storage_table(inventory);
+                movies_storage_table(inventory);
         
         case "f":
+            clean();
+            title("🍽️", "Foods & Drinks");
+            storage(foods, "name");
+            storage(drinks, "name");
+            
+        
+        case "g":
             clean();
             print("🙋 -Ok, see you soon")
             break;
