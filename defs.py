@@ -3,10 +3,15 @@ import os;
 
 #Creating Variables
 company_name = "Popcorn Palace Rentals";
-inventory = [
-    {"name": "Z", "genres": "Drama 🎭", "rating": "1"},
-]
 width = 60;
+class User:
+    movies = [
+    {"name": "Z", "genres": "Drama 🎭", "rating": "1"},
+    ]
+    foods = [
+    {"name": "Burger 🍔"},
+    ]
+
 
 
 #Creating defs
@@ -17,6 +22,11 @@ def title(emoji, text):
 
 def clean():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def exit():
+    exit_comand = input("\nPress anything to exit: \n➤ ");
+    clean()
+    attendant_message("💁", "What would you like?");
 
 def attendant_message(emoji, message):
     print("=" * width);
@@ -30,7 +40,8 @@ def attendant_message(emoji, message):
 [d] Search for a movie
 [e] View rented movies
 [f] Foods & Drinks
-[g] Exit""");
+[g] Inventory
+[h] Exit""");
 
 def storage(storage, name):
     for index, i in enumerate(storage, start=1):
