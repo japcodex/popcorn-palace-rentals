@@ -1,5 +1,5 @@
-#Foods (prices in $)
 
+#Create list
 foods = [
     {"name": "Burger 🍔"}, # $8
     {"name": "Pizza 🍕"}, # $12

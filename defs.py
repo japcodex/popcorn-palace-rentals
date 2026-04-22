@@ -40,18 +40,6 @@ def exit():
 
 def random_message(tipo):
     mensagens = {
-        "welcome": [
-            "Welcome back! What can I get for you today?",
-            "Hey there! Ready for a movie? 🍿",
-            "Good to see you! What’s the plan today?",
-            "Hi! Looking for something fun to watch?",
-            "Hello again! Got popcorn ready? 😄",
-            "Hey! Let’s find your next favorite movie",
-            "Welcome! What are we watching today?",
-            "Nice to see you! Want some recommendations?",
-            "Hey hey! Movie time? 🎥",
-            "Back again? Love it! What do you need?"
-        ],
         "success": [
             "Nice choice! Enjoy your movie 🎬",
             "Great pick! You're gonna love this one",
@@ -79,11 +67,33 @@ def random_message(tipo):
     }
     return random.choice(mensagens[tipo])
 
-def attendant_message(emoji, message):
+def welcome_message(emoji, text):
     print("=" * width);
     print(f"🍿{company_name.center(width - 6).upper()}🍿")
     print("=" * width);
-    print(f"{emoji} -{message}")
+
+    print(f"{emoji} -{text}")
+    print("""
+[a] Rent a movie
+[b] Return a movie
+[c] Available movies
+[d] View rented movies
+[e] Foods & Drinks
+[f] User
+[g] Exit""");
+
+def attendant_message(emoji, tipo="welcome", custom_text=None):
+    print("=" * width);
+    print(f"🍿{company_name.center(width - 6).upper()}🍿")
+    print("=" * width);
+
+    if custom_text:
+        text = custom_text
+    else:
+        text = random_message(tipo)
+
+    print(f"{emoji} -{text}")
+
     print("""
 [a] Rent a movie
 [b] Return a movie
@@ -108,121 +118,118 @@ def movies_storage_table(storage):
     print("=" * width)
 
 def view_and_search_movies(movies):
-    while True:
-        title("🎬", "Movies")
-        print("[a] View all movies")
-        print("[b] Recommended        ⭐⭐⭐")
-        print("[c] Surprise me        🎲")
-        print("[d] Top rated          🏆")
-        print("[e] Award-winning      🏅")
-        print("[f] Search by name     🔍")
-        print("[g] Search by genre    🎭")
-        print("[h] Filter by rating   📊")
-        print("[i] Back              ↩")
+    title("🎬", "Movies")
+    print("[a] View all movies")
+    print("[b] Recommended        ⭐⭐⭐")
+    print("[c] Surprise me        🎲")
+    print("[d] Top rated          🏆")
+    print("[e] Award-winning      🏅")
+    print("[f] Search by name     🔍")
+    print("[g] Search by genre    🎭")
+    print("[h] Filter by rating   📊")
+    print("[i] Back              ↩")
+    print("=" * width)
+
+    selec = input("\nPlease choose an option: \n➤ ").lower()
+
+    if selec == "a":
+        clean()
+        title("🎬", "All Movies")
+        movies_storage_table(movies)
+        input("\nPress Enter to continue...")
+
+    elif selec == "b":
+        clean()
+        title("⭐", "Recommended")
+        recommended = [m for m in movies if int(m["rating"]) >= 3]
+        if recommended:
+            movies_storage_table(recommended)
+        else:
+            print("No recommended movies available.")
+        input("\nPress Enter to continue...")
+
+    elif selec == "c":
+        clean()
+        title("🎲", "Surprise Me!")
+        surprise = random.choice(movies)
+        movies_storage_table([surprise])
+        input("\nPress Enter to continue...")
+
+    elif selec == "d":
+        clean()
+        title("🏆", "Top Rated")
+        sorted_movies = sorted(movies, key=lambda m: int(m["rating"]), reverse=True)
+        movies_storage_table(sorted_movies)
+        input("\nPress Enter to continue...")
+
+    elif selec == "e":
+        clean()
+        awarded = [m for m in movies if int(m["rating"]) == 3]
+        title("🏅", "Award-Winning")
+        if awarded:
+            movies_storage_table(awarded)
+        else:
+            print("No award-winning movies found.")
+            input("\nPress Enter to continue...")
+
+    elif selec == "f":
+        clean()
+        title("🔍", "Search by Name")
+        query = input("Type part of the movie name: \n➤ ").upper()
+        results = [m for m in movies if query in m["name"].upper()]
+        if results:
+            movies_storage_table(results)
+        else:
+            print("❌ No movies found.")
+        input("\nPress Enter to continue...")
+
+    elif selec == "g":
+        clean()
+        title("🎭", "Search by Genre")
+        genres = sorted(set(m["genres"] for m in movies))
+        for i, g in enumerate(genres, 1):
+            print(f"[{i}] {g}")
         print("=" * width)
 
-        selec = input("\nPlease choose an option: \n➤ ").lower()
-
-        if selec == "a":
+        choice = input("Choose a genre number: \n➤ ")
+        if choice.isdigit() and 1 <= int(choice) <= len(genres):
+            chosen = genres[int(choice) - 1]
+            results = [m for m in movies if m["genres"] == chosen]
             clean()
-            title("🎬", "All Movies")
-            movies_storage_table(movies)
-            input("\nPress Enter to continue...")
+            title("🎭", chosen)
+            movies_storage_table(results)
+        else:
+            print("❌ Invalid option.")
+        input("\nPress Enter to continue...")
 
-        elif selec == "b":
-            clean()
-            title("⭐", "Recommended")
-            recommended = [m for m in movies if int(m["rating"]) >= 3]
-            if recommended:
-                movies_storage_table(recommended)
-            else:
-                print("No recommended movies available.")
-            input("\nPress Enter to continue...")
+    elif selec == "h":
+        clean()
+        title("📊", "Filter by Rating")
+        print("[1] ⭐ (bad)")
+        print("[2] ⭐⭐ (average)")
+        print("[3] ⭐⭐⭐ (great)")
+        print("=" * width)
 
-        elif selec == "c":
-            import random
+        choice = input("Choose a rating: \n➤ ")
+        if choice in ["1", "2", "3"]:
+            results = [m for m in movies if int(m["rating"]) == int(choice)]
             clean()
-            title("🎲", "Surprise Me!")
-            surprise = random.choice(movies)
-            movies_storage_table([surprise])
-            input("\nPress Enter to continue...")
-
-        elif selec == "d":
-            clean()
-            title("🏆", "Top Rated")
-            sorted_movies = sorted(movies, key=lambda m: int(m["rating"]), reverse=True)
-            movies_storage_table(sorted_movies)
-            input("\nPress Enter to continue...")
-
-        elif selec == "e":
-            clean()
-            awarded = [m for m in movies if int(m["rating"]) == 3]
-            title("🏅", "Award-Winning")
-            if awarded:
-                movies_storage_table(awarded)
-            else:
-                print("No award-winning movies found.")
-            input("\nPress Enter to continue...")
-
-        elif selec == "f":
-            clean()
-            title("🔍", "Search by Name")
-            query = input("Type part of the movie name: \n➤ ").upper()
-            results = [m for m in movies if query in m["name"].upper()]
+            title("📊", f"Rating: {'⭐' * int(choice)}")
             if results:
                 movies_storage_table(results)
             else:
-                print("❌ No movies found.")
-            input("\nPress Enter to continue...")
-
-        elif selec == "g":
-            clean()
-            title("🎭", "Search by Genre")
-            genres = sorted(set(m["genres"] for m in movies))
-            for i, g in enumerate(genres, 1):
-                print(f"[{i}] {g}")
-            print("=" * width)
-
-            choice = input("Choose a genre number: \n➤ ")
-            if choice.isdigit() and 1 <= int(choice) <= len(genres):
-                chosen = genres[int(choice) - 1]
-                results = [m for m in movies if m["genres"] == chosen]
-                clean()
-                title("🎭", chosen)
-                movies_storage_table(results)
-            else:
-                print("❌ Invalid option.")
-            input("\nPress Enter to continue...")
-
-        elif selec == "h":
-            clean()
-            title("📊", "Filter by Rating")
-            print("[1] ⭐ (bad)")
-            print("[2] ⭐⭐ (average)")
-            print("[3] ⭐⭐⭐ (great)")
-            print("=" * width)
-
-            choice = input("Choose a rating: \n➤ ")
-            if choice in ["1", "2", "3"]:
-                results = [m for m in movies if int(m["rating"]) == int(choice)]
-                clean()
-                title("📊", f"Rating: {'⭐' * int(choice)}")
-                if results:
-                    movies_storage_table(results)
-                else:
-                    print("No movies with this rating.")
-            else:
-                print("❌ Invalid option.")
-            input("\nPress Enter to continue...")
-
-        elif selec == "i":
-            clean()
-            attendant_message("🙋", "Alright, what would you like to do next?")
-            break
-
+                print("No movies with this rating.")
         else:
-            clean()
-            attendant_message("🙍", "Sorry, I didn't understand that. Try again!")
+            print("❌ Invalid option.")
+        input("\nPress Enter to continue...")
+
+    elif selec == "i":
+        clean()
+        attendant_message("🙋", "Alright, what would you like to do next?")
+
+    else:
+        clean()
+        attendant_message("🙍", "Sorry, I didn't understand that. Try again!")
 
 def user_config():
     while True:
@@ -354,6 +361,7 @@ def user_config():
             print(f"  History     : {len(user.history)} rentals")
             print(f"  Foods saved : {len(user.foods)} items")
             print("=" * width)
+            input("\nPress Enter to continue...")
 
         elif selec == "f":
             clean()

@@ -5,7 +5,7 @@ from defs import *
 
 loading("Processing")
 clean();
-attendant_message("💁", f"Welcome to {company_name}! \nWhat would you like to do today?");
+welcome_message("💁", f"Welcome to {company_name}! \nWhat would you like to do today?");
 
 while True:
     selec = input("\nPlease choose an option: \n➤ ").lower();
@@ -24,12 +24,12 @@ while True:
                 if (0 <= index < len(movies)):
                     user.movies.append(movies[index]);
                     del(movies[index]);
-                    user.history.append(movie)
+                    user.history.append(movies)
                     clean();
-                    attendant_message("💁", "Thank you for your purchase. \nWhat would you like?");
+                    attendant_message("💁", "success");
                 else:
                     clean();
-                    attendant_message("🙍", "Sorry, but we don´t have this movie. \nTry again, please!");
+                    attendant_message("🙍", "error");
             
             elif (new_selec.isalpha()):
                 for movie in movies:
@@ -38,16 +38,16 @@ while True:
                         movies.remove(movie);
 
                         clean();
-                        attendant_message("💁", "Thank you for your purchase. \nWhat would you like?");
+                        attendant_message("💁", "success");
                         break;
                         
                 else:
                     clean();
-                    attendant_message("🙍", "Sorry, but we don´t have this movie. \nTry again, please!");
+                    attendant_message("🙍", "error");
             
             else:
                 clean();
-                attendant_message("🙍", "Sorry, but we don´t have this movie. \nTry again, please!");
+                attendant_message("🙍", "error");
 
 
         
@@ -69,7 +69,7 @@ while True:
                         movies.append(user.movies[index]);
                         del(user.movies[index]);
                         clean();
-                        attendant_message("💁", "Thank you for your return. \nWhat would you like?");
+                        attendant_message("💁", "success");
                     else:
                         clean();
                         attendant_message("🙍", "Sorry, but you don´t have this movie. \nTry again, please!");
@@ -95,7 +95,7 @@ while True:
         case "d":
             if (len(user.movies) <=0):
                 clean();
-                attendant_message("🙍", "Sorry, but you don´t have any rented movie");
+                attendant_message("🙍", "error");
             elif (len(user.movies) >0):
                 clean()
                 title("🎥", "Your Rented Movies");
@@ -113,23 +113,23 @@ while True:
             if (new_selec.isdigit()):
                 index = int(new_selec) -1;
                 if (0 <= index < len(foods)):
-                    User.foods.append(foods[index]);
+                    user.foods.append(foods[index]);
                     #del(foods[index]);
                     clean();
-                    attendant_message("💁", "Thank you. \nWhat would you like?");
+                    attendant_message("💁", "success");
                 else:
                     clean();
-                    attendant_message("🙍", "Sorry, but you don´t have this food. \nTry again, please!");
+                    attendant_message("🙍", "error");
             
             elif (new_selec.isalpha()):
                 for food in foods:
                     if (food["name"].upper() == new_selec):
-                        User.foods.append(food);
+                        user.foods.append(food);
                         #foods.remove(food);
                     
                 else:
                     clean();
-                    attendant_message("🙍", "Sorry, but you don´t have this food. \nTry again, please!");
+                    attendant_message("🙍", "error");
             
             else:
                 clean();
@@ -145,4 +145,4 @@ while True:
 
         case _:
             clean();
-            attendant_message("🙍", "Sorry, I don´t urdestand your message. \nTry again, please!");
+            attendant_message("🙍", "error");
