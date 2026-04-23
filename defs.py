@@ -22,7 +22,7 @@ def loading(text="Loading"):
     print(text, end="")
     for _ in range(3):
         print(".", end="", flush=True)
-        time.sleep(0.3)
+        time.sleep(0.2)
     print()
 
 def title(emoji, text):
