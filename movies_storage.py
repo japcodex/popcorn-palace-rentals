@@ -16,36 +16,36 @@
 
 #Creating my storage
 movies = [
-    {"name": "The Dark Knight", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
-    {"name": "Interstellar", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
-    {"name": "Titanic", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "The Dark Knight", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Interstellar", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Titanic", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "The Room", "genres": "Drama 🎭", "rating": 1, "total_stock": 5, "stock": 5},
     {"name": "The Conjuring", "genres": "Horror 👻", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Cats", "genres": "Fantasy 🧙", "rating": 1, "total_stock": 5, "stock": 5},
-    {"name": "Inception", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "Inception", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Toy Story", "genres": "Animation 🎨", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Emoji Movie", "genres": "Animation 🎨", "rating": 1, "total_stock": 5, "stock": 5},
-    {"name": "The Lord of the Rings", "genres": "Fantasy 🧙", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
-    {"name": "Joker", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
-    {"name": "Parasite", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "The Lord of the Rings", "genres": "Fantasy 🧙", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Joker", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Parasite", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Get Out", "genres": "Horror 👻", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Social Dilemma", "genres": "Documentary 🎥", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Avengers: Endgame", "genres": "Adventure 🧭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Morbius", "genres": "Action 🧭", "rating": 1, "total_stock": 5, "stock": 5},
-    {"name": "La La Land", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "La La Land", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Shrek", "genres": "Animation 🎨", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Mad Max: Fury Road", "genres": "Action 🧭", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "Gladiator", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
-    {"name": "The Matrix", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "Gladiator", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "The Matrix", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "It", "genres": "Horror 👻", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Frozen", "genres": "Animation 🎨", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Notebook", "genres": "Romance 💕", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Se7en", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "Up", "genres": "Animation 🎨", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "Up", "genres": "Animation 🎨", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Superbad", "genres": "Comedy 😂", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Batman & Robin", "genres": "Action 🧭", "rating": 1, "total_stock": 5, "stock": 5},
-    {"name": "The Godfather", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
-    {"name": "Pulp Fiction", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "The Godfather", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Pulp Fiction", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Fight Club", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Hangover", "genres": "Comedy 😂", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Scary Movie", "genres": "Comedy 😂", "rating": 2, "total_stock": 5, "stock": 5},
@@ -58,18 +58,18 @@ movies = [
     {"name": "Minions", "genres": "Animation 🎨", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Black Swan", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Grand Budapest Hotel", "genres": "Comedy 😂", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "1917", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "1917", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Tenet", "genres": "Sci-Fi 🚀", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "The Batman", "genres": "Action 🧭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Logan", "genres": "Action 🧭", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "Jaws", "genres": "Horror 👻", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "Jaws", "genres": "Horror 👻", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Alien", "genres": "Horror 👻", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Aliens", "genres": "Action 🧭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Thing", "genres": "Horror 👻", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "Casablanca", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "Casablanca", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "The Truman Show", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Catch Me If You Can", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "The Departed", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "The Departed", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Goodfellas", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Scarface", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Big Lebowski", "genres": "Comedy 😂", "rating": 2, "total_stock": 5, "stock": 5},
@@ -95,9 +95,8 @@ movies = [
     {"name": "Divergent", "genres": "Sci-Fi 🚀", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Maze Runner", "genres": "Sci-Fi 🚀", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Ready Player One", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "The Curious Case of Benjamin Button", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "Slumdog Millionaire", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
-    {"name": "Life of Pi", "genres": "Adventure 🧭", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "Slumdog Millionaire", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Life of Pi", "genres": "Adventure 🧭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Cast Away", "genres": "Adventure 🧭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Terminal", "genres": "Comedy 😂", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Shutter Island", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5},
@@ -111,16 +110,15 @@ movies = [
     {"name": "Maleficent", "genres": "Fantasy 🧙", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Snow White and the Huntsman", "genres": "Fantasy 🧙", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "The Lego Movie", "genres": "Animation 🎨", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "Spider-Man: Into the Spider-Verse", "genres": "Animation 🎨", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
-    {"name": "Soul", "genres": "Animation 🎨", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "Soul", "genres": "Animation 🎨", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Turning Red", "genres": "Animation 🎨", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Fast & Furious", "genres": "Action 🧭", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Hobbs & Shaw", "genres": "Action 🧭", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Madagascar", "genres": "Animation 🎨", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "The Fault in Our Stars", "genres": "Romance 💕", "rating": 2, "total_stock": 5, "stock": 5},
-    {"name": "Love Actually", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Love Actually", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5, "favorite": True},
     {"name": "Notting Hill", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "Bohemian Rhapsody", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "Bohemian Rhapsody", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Rocketman", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Elvis", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Avengers", "genres": "Action 🧭", "rating": 3, "total_stock": 5, "stock": 5},
@@ -141,5 +139,32 @@ movies = [
     {"name": "The Whale", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Marriage Story", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "The Northman", "genres": "Action 🧭", "rating": 3, "total_stock": 5, "stock": 5},
-    {"name": "Everything Everywhere All at Once", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5}, # 🏆
+    {"name": "Dune", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Blade Runner 2049", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "The Prestige", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Whiplash", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "The Revenant", "genres": "Adventure 🧭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "A Quiet Place", "genres": "Horror 👻", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "A Quiet Place Part II", "genres": "Horror 👻", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Bird Box", "genres": "Horror 👻", "rating": 2, "total_stock": 5, "stock": 5},
+    {"name": "Edge of Tomorrow", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Oblivion", "genres": "Sci-Fi 🚀", "rating": 2, "total_stock": 5, "stock": 5},
+    {"name": "The Wolf of Wall Street", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "The Irishman", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Drive", "genres": "Action 🧭", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Nightcrawler", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Prisoners", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Zodiac", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Gone Girl", "genres": "Thriller 😱", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Ford v Ferrari", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Rush", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},
+    {"name": "Gran Turismo", "genres": "Drama 🎭", "rating": 2, "total_stock": 5, "stock": 5},
+    {"name": "The Hateful Eight", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Django Unchained", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "The King's Speech", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "The Imitation Game", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True},
+    {"name": "Arrival", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Ex Machina", "genres": "Sci-Fi 🚀", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "Her", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
+    {"name": "The Shape of Water", "genres": "Fantasy 🧙", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
 ]

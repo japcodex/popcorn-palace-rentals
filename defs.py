@@ -1,23 +1,30 @@
 #Import library
-import os;
-import time;
-import random;
-from movies_storage import movies;
+import os
+import time
+import random
+from movies_storage import movies
 
 #Creating Variables
-company_name = "Popcorn Palace Rentals";
-default_width = 80;
-width = default_width;
+company_name = "Popcorn Palace Rentals"
+default_width = 80
+width = default_width
+
 class User:
     def __init__(self):
         self.name = "Guest"
         self.movies = []
         self.foods = []
-        self.favorites = []
         self.reserved = []
         self.history = []
-
 user = User()
+
+menu = """
+[a] Available movies
+[b] Return a movie
+[c] View rented movies
+[d] Foods & Drink
+[e] User
+[f] Exit"""
 
 #Creating defs
 def loading(text="Loading"):
@@ -28,17 +35,12 @@ def loading(text="Loading"):
     print()
 
 def title(emoji, text):
-    print("\n" + "=" * width);
-    print(f"{emoji} {text.center(width - 6).upper()}");
-    print("=" * width);
+    print("\n" + "=" * width)
+    print(f"{emoji} {text.center(width - 6).upper()}")
+    print("=" * width)
 
 def clean():
     os.system('cls' if os.name == 'nt' else 'clear')
-
-def exit():
-    exit_comand = input("\nPress anything to exit: \n➤ ");
-    clean()
-    attendant_message("💁", "attendant");
 
 def random_message(tipo):
     mensagens = {
@@ -93,49 +95,24 @@ def random_message(tipo):
     }
     return random.choice(mensagens[tipo])
 
-def welcome_message(emoji, text):
-    print("=" * width);
-    print(f"🍿{company_name.center(width - 6).upper()}🍿")
-    print("=" * width);
-
-    print(f"{emoji} -{text}")
-    print("""
-[a] Rent a movie
-[b] Return a movie
-[c] Available movies
-[d] View rented movies
-[e] Foods & Drinks
-[f] User
-[g] Exit""");
-
 def attendant_message(emoji, type="welcome", custom_text=None):
-    print("=" * width);
+    print("=" * width)
     print(f"🍿{company_name.center(width - 6).upper()}🍿")
-    print("=" * width);
+    print("=" * width)
 
-    if custom_text:
-        text = custom_text
-    else:
-        text = random_message(type)
+    if custom_text: text = custom_text
+    else: text = random_message(type)
 
     print(f"{emoji} -{text}")
-
-    print("""
-[a] Rent a movie
-[b] Return a movie
-[c] Available movies
-[d] View rented movies
-[e] Foods & Drinks
-[f] User
-[g] Exit""");
+    print(menu)
 
 def storage(storage, name):
     for index, i in enumerate(storage, start=1):
-        print(f"{index}.", i[f"{name}"]);
-    print("=" * width);
+        print(f"{index}.", i[f"{name}"])
+    print("=" * width)
 
 def movies_storage_table(storage):
-    print(f"{'NAME':<45} {'GENRES':<16} {'RATING':<10} {'STOCK':<10}")
+    print(f"{'NAME':<35} {'GENRES':<16} {'RATING':<10} {'STOCK':<8} {'AWARD'}")
     print("-" * width)
     
     for index, i in enumerate(storage, start=1):
@@ -147,21 +124,114 @@ def movies_storage_table(storage):
         empty_stock = "❌" * (i["total_stock"] - i["stock"])
         stock_display = stock_bar + empty_stock
 
-        print(f"{index:<3}. {i['name']:<40} {i['genres']:<15} {stars_display}  {stock_display}")
+        award_display = "🏆" if i.get("award", False) else " "
+        favorited = "♥" if i.get("favorite", False) else ""
+        name_display = f"{i['name']} {favorited}"
+
+        print(f"{index:<3}. {name_display:<30} {i['genres']:<15} {stars_display}  {stock_display:<8} {award_display}")
     print("=" * width)
+
+def confirm_rent(movie):
+    print(f"\n🎬 {movie['name']}")
+    print(f"⭐ {'⭐' * movie['rating']}")
+    print(f"📦 Stock: {movie['stock']}")
+    
+    choice = input("\nAre you sure you want to rent this movie? [y/n]: ").lower()
+    return choice == "y"
+
+def select_movie(movie_list):
+    print("💁 -Do you want to rent a movie?")
+    print("You can type the movie title or index.")
+    print("Use 'fav' to favorite/unfavorite (ex: 10 fav)")
+    print("[E] For exit!")
+
+    new_selec = input("\nType the movie title or number: \n➤ ").upper().split()
+
+    if not new_selec:
+        return
+
+    if new_selec[0] == "E":
+        return
+
+    is_fav = "FAV" in new_selec
+    value = new_selec[0]
+
+    if value.isdigit():
+        index = int(value) - 1
+
+        if 0 <= index < len(movie_list):
+            movie = movie_list[index]
+
+            if is_fav:
+                movie["favorite"] = not movie.get("favorite", False)
+                clean()
+                print("❤️   Added to favorites!" if movie["favorite"] else "💔   Removed from favorites!")
+                input("\nPress Enter to continue...")
+            else:
+                if movie["stock"] > 0:
+                    if confirm_rent(movie):
+                        movie["stock"] -= 1
+                        user.movies.append(movie)
+                        user.history.append({**movie, 'type': 'movie'})
+
+                        clean()
+                        attendant_message("💁", "success")
+                    else:
+                        clean()
+                        attendant_message("🙋", "attendant")
+                else:
+                    clean()
+                    attendant_message("🙍", "empty")
+        else:
+            clean()
+            attendant_message('🙍', 'error')
+
+    else:
+        found = False
+
+        for movie in movie_list:
+            if value in movie["name"].upper():
+                found = True
+
+                if is_fav:
+                    movie["favorite"] = not movie.get("favorite", False)
+                    clean()
+                    print("❤️   Added to favorites!" if movie["favorite"] else "💔   Removed from favorites!")
+                    input("\nPress Enter to continue...")
+                else:
+                    if movie["stock"] > 0:
+                        if confirm_rent(movie):
+                            movie["stock"] -= 1
+                            user.movies.append(movie)
+                            user.history.append({**movie, 'type': 'movie'})
+
+                            clean()
+                            attendant_message("💁", "success")
+                        else:
+                            clean()
+                            attendant_message("🙋", "attendant")
+                    else:
+                        clean()
+                        attendant_message("🙍", "empty")
+
+                break
+
+        if not found:
+            clean()
+            attendant_message("🙍", "error")
 
 def view_and_search_movies(movies):
     while True:
-        clean();
+        clean()
         title("🎬", "Movies")
         print("[a] View all movies")
         print("[b] Recommended        ⭐⭐⭐")
         print("[c] Surprise me        🎲")
-        print("[d] Top rated          🏆")
-        print("[e] Award-winning      🏅")
-        print("[f] Search by name     🔍")
-        print("[g] Search by genre    🎭")
-        print("[h] Filter by rating   📊")
+        print("[d] Hall of fame       🏆")
+        print("[e] Search by name     🔍")
+        print("[f] Search by genre    🎭")
+        print("[g] Filter by rating   📊")
+        print("[h] Favorites          ❤️")
         print("[i] Back               🔙")
         print("=" * width)
 
@@ -171,7 +241,8 @@ def view_and_search_movies(movies):
             clean()
             title("🎬", "All Movies")
             movies_storage_table(movies)
-            input("\nPress Enter to continue...")
+            select_movie(movies)
+            break
 
         elif new_selec == "b":
             clean()
@@ -181,44 +252,38 @@ def view_and_search_movies(movies):
                 movies_storage_table(recommended)
             else:
                 print("No recommended movies available.")
-            input("\nPress Enter to continue...")
+            select_movie(recommended)
+            break
 
         elif new_selec == "c":
             clean()
             title("🎲", "Surprise Me!")
             surprise = random.choice(movies)
             movies_storage_table([surprise])
-            input("\nPress Enter to continue...")
+            select_movie(surprise)
+            break
 
         elif new_selec == "d":
             clean()
             title("🏆", "Top Rated")
-            sorted_movies = sorted(movies, key=lambda m: int(m["rating"]), reverse=True)
-            movies_storage_table(sorted_movies)
-            input("\nPress Enter to continue...")
+            award_movies = [m for m in movies if m.get("award", False)]
+            movies_storage_table(award_movies)
+            select_movie(award_movies)
+            break
 
         elif new_selec == "e":
-            clean()
-            awarded = [m for m in movies if int(m["rating"]) == 3]
-            title("🏅", "Award-Winning")
-            if awarded:
-                movies_storage_table(awarded)
-            else:
-                print("No award-winning movies found.")
-                input("\nPress Enter to continue...")
-
-        elif new_selec == "f":
             clean()
             title("🔍", "Search by Name")
             query = input("Type part of the movie name: \n➤ ").upper()
             results = [m for m in movies if query in m["name"].upper()]
             if results:
                 movies_storage_table(results)
+                select_movie(results)
+                break
             else:
                 print("❌ No movies found.")
-            input("\nPress Enter to continue...")
 
-        elif new_selec == "g":
+        elif new_selec == "f":
             clean()
             title("🎭", "Search by Genre")
             genres = sorted(set(m["genres"] for m in movies))
@@ -235,9 +300,10 @@ def view_and_search_movies(movies):
                 movies_storage_table(results)
             else:
                 print("❌ Invalid option.")
-            input("\nPress Enter to continue...")
+            select_movie(results)
+            break
 
-        elif new_selec == "h":
+        elif new_selec == "g":
             clean()
             title("📊", "Filter by Rating")
             print("[1] ⭐ (bad)")
@@ -256,12 +322,27 @@ def view_and_search_movies(movies):
                     print("No movies with this rating.")
             else:
                 print("❌ Invalid option.")
-            input("\nPress Enter to continue...")
+            select_movie(results)
+            break
 
+        elif new_selec == "h":
+            clean()
+            title("❤️", "Favorites")
+
+            favorite_movies = [m for m in movies if m.get("favorite", False)]
+
+            if favorite_movies:
+                movies_storage_table(favorite_movies)
+                select_movie(favorite_movies)
+                break
+            else:
+                print("❌ No favorite movies yet.")
+                input("\nPress Enter to continue...")
+        
         elif new_selec == "i":
             clean()
             attendant_message("🙋", "attendant")
-            break;
+            break
 
         else:
             clean()
@@ -271,12 +352,11 @@ def user_config():
     while True:
         clean()
         title("👤", "User")
-        print("[a] Reserved movies")
-        print("[b] Favorites")
-        print("[c] Inventory")
-        print("[d] History")
-        print("[e] Account")
-        print("[f] Back")
+        print("[a] Reserved movies    📌")
+        print("[b] Inventory          🎒")
+        print("[c] History            🕘")
+        print("[d] Account            ⚙️")
+        print("[e] Back               🔙")
         print("=" * width)
 
         selec = input("\nPlease choose an option: \n➤ ").lower()
@@ -292,76 +372,6 @@ def user_config():
 
         elif selec == "b":
             clean()
-            title("❤️", "Favorites")
-            if not user.favorites:
-                print("  You have no favorite movies yet.")
-            else:
-                movies_storage_table(user.favorites)
-            print("\n[a] Add a favorite")
-            print("[b] Remove a favorite")
-            print("[c] Back")
-            print("=" * width)
-            sub = input("\nPlease choose an option: \n➤ ").lower()
-
-            if sub == "a":
-                all_movies = movies + user.movies
-                clean()
-                title("🎬", "Add to Favorites")
-                storage(all_movies, "name")
-                choice = input("\nType the movie title or number: \n➤ ").upper()
-                found = None
-                if choice.isdigit():
-                    index = int(choice) - 1
-                    if 0 <= index < len(all_movies):
-                        found = all_movies[index]
-                else:
-                    for m in all_movies:
-                        if m["name"].upper() == choice:
-                            found = m
-                            break
-                if found:
-                    if found not in user.favorites:
-                        user.favorites.append(found)
-                        clean()
-                        attendant_message("success")
-                    else:
-                        clean()
-                        attendant_message("🙍", "success")
-                else:
-                    clean()
-                    attendant_message("🙍", "error")
-
-            elif sub == "b":
-                if not user.favorites:
-                    clean()
-                    attendant_message("🙍", "error")
-                else:
-                    clean()
-                    title("💔", "Remove Favorite")
-                    storage(user.favorites, "name")
-                    choice = input("\nType the movie title or number: \n➤ ").upper()
-                    if choice.isdigit():
-                        index = int(choice) - 1
-                        if 0 <= index < len(user.favorites):
-                            removed = user.favorites.pop(index)
-                            clean()
-                            attendant_message("💁", "success")
-                        else:
-                            clean()
-                            attendant_message("🙍", "error")
-                    else:
-                        for fav in user.favorites:
-                            if fav["name"].upper() == choice:
-                                user.favorites.remove(fav)
-                                clean()
-                                attendant_message("💁", "success")
-                                break
-                        else:
-                            clean()
-                            attendant_message("🙍", "error")
-
-        elif selec == "c":
-            clean()
             title("🎞️", "Movies")
             if user.movies:
                 storage(user.movies, "name")
@@ -376,7 +386,7 @@ def user_config():
                 print("=" * width)
             input("\nPress Enter to continue...")
 
-        elif selec == "d":
+        elif selec == "c":
             clean()
             title("📜", "Rental History")
             if not user.history:
@@ -385,24 +395,24 @@ def user_config():
             else:
                 print(f"  Total rentals: {len(user.history)}")
                 print("-" * width)
-                movies_storage_table(user.history)
+                storage(user.history, "name")
             input("\nPress Enter to continue...")
 
-        elif selec == "e":
+        elif selec == "d":
             clean()
             title("👤", "Account")
-            print(f"  Rented now  : {len(user.movies)} movies")
-            print(f"  Favorites   : {len(user.favorites)} movies")
-            print(f"  History     : {len(user.history)} rentals")
-            print(f"  Foods saved : {len(user.foods)} items")
+            print(f"{' Name':<15}: {user.name}")
+            print(f"{' Rented now':<15}: {len(user.movies)} movies")
+            print(f"{' Favorites':<15}: {sum(1 for m in movies if m.get('favorite', False))} movies")
+            print(f"{' History':<15}: {len(user.history)} rentals")
+            print(f"{' Foods saved':<15}: {len(user.foods)} items")
             print("=" * width)
             input("\nPress Enter to continue...")
 
-        elif selec == "f":
+        elif selec == "e":
             clean()
             attendant_message("🙋", "attendant")
             break
 
         else:
-            clean()
-            attendant_message("🙍", "error")
+            ...
