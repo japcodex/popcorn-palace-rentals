@@ -12,84 +12,97 @@ while True:
 
     match selec:
         case "a":
-            clean();
-            title("🎬", "Movies");
-            storage(movies, "name");
+            clean()
+            title("🎬", "Movies")
+            storage(movies, "name")
             print("💁 -Perfect, choose any movie! \nYou can type the movie title or index.")
+            new_selec = input("\nType the movie title or number: \n➤ ").upper()
 
-            new_selec = input("\nType the movie title or number: \n➤ ").upper();
+            if new_selec.isdigit():
+                index = int(new_selec) - 1
 
-            if (new_selec.isdigit()):
-                index = int(new_selec) -1;
-                if (0 <= index < len(movies)):
-                    user.movies.append(movies[index]);
-                    del(movies[index]);
-                    user.history.append(movies)
-                    clean();
-                    attendant_message("💁", "success");
+                if 0 <= index < len(movies):
+                    movie = movies[index]
+
+                    if movie["stock"] > 0:
+                        movie["stock"] -= 1
+                        user.movies.append(movie)
+                        user.history.append(movie)
+
+                        clean()
+                        attendant_message("💁", "success")
+                    else:
+                        clean()
+                        attendant_message("🙍", "empty")
                 else:
-                    clean();
-                    attendant_message("🙍", "error");
-            
-            elif (new_selec.isalpha()):
-                for movie in movies:
-                    if (movie["name"].upper() == new_selec):
-                        user.movies.append(movie);
-                        movies.remove(movie);
+                    clean()
+                    attendant_message("🙍", "error")
 
-                        clean();
-                        attendant_message("💁", "success");
-                        break;
-                        
-                else:
-                    clean();
-                    attendant_message("🙍", "error");
-            
             else:
-                clean();
-                attendant_message("🙍", "error");
+                found = False
 
+                for movie in movies:
+                    if movie["name"].upper() == new_selec:
+                        found = True
+
+                        if movie["stock"] > 0:
+                            movie["stock"] -= 1
+                            user.movies.append(movie)
+                            user.history.append(movie)
+
+                            clean()
+                            attendant_message("💁", "success")
+                        else:
+                            clean()
+                            attendant_message("🙍", "empty")
+
+                        break
+
+                if not found:
+                    clean()
+                    attendant_message("🙍", "error")
 
         
         case "b":
-            if (len(user.movies) <=0):
-                clean();
-                attendant_message("🙍", "Sorry, but you don´t have any movies");
-            elif (len(user.movies) >0):
+            if not user.movies:
                 clean()
-                title("🎒", "Your Inventory");
-                storage(user.movies, "name");
-                print("💁 -Select the movie you wish to return. \nYou can type the movie title or index.")
-                
-                new_selec = input("\nType the movie title or number: \n➤ ").upper();
-                
-                if (new_selec.isdigit()):
-                    index = int(new_selec) -1;
-                    if (0 <= index < len(user.movies)):
-                        movies.append(user.movies[index]);
-                        del(user.movies[index]);
-                        clean();
-                        attendant_message("💁", "success");
+                attendant_message("🙍", "empty")
+
+            else:
+                clean()
+                title("🎒", "Your Inventory")
+                storage(user.movies, "name")
+                print("💁 -Select the movie you wish to return.\nYou can type the movie title or index.")
+                new_selec = input("\nType the movie title or number: \n➤ ").upper()
+
+                if new_selec.isdigit():
+                    index = int(new_selec) - 1
+
+                    if 0 <= index < len(user.movies):
+                        movie = user.movies[index]
+                        movie["stock"] += 1
+                        user.movies.remove(movie)
+                        clean()
+                        attendant_message("💁", "success")
                     else:
-                        clean();
-                        attendant_message("🙍", "Sorry, but you don´t have this movie. \nTry again, please!");
-            
-                elif (new_selec.isalpha()):
-                    for inv in user.movies:
-                        if (inv["name"].upper() == new_selec):
-                            movies.append(inv);
-                            user.movies.remove(inv);
-                    
-                    else:
-                        clean();
-                        attendant_message("🙍", "Sorry, but you don´t have this movie. \nTry again, please!");
-            
+                        clean()
+                        attendant_message("🙍", "error")
+
                 else:
-                    clean();
-                    attendant_message("🙍", "Sorry, but you don´t have this movie. \nTry again, please!");
+                    found = False
+                    for movie in user.movies:
+                        if movie["name"].upper() == new_selec:
+                            found = True
+                            movie["stock"] += 1
+                            user.movies.remove(movie)
+                            clean()
+                            attendant_message("💁", "success")
+                            break
+                    if not found:
+                        clean()
+                        attendant_message("🙍", "error")
 
         case "c":
-            clean();
             view_and_search_movies(movies);
 
         case "d":
