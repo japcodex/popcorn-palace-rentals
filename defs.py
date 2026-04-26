@@ -2,7 +2,6 @@
 import os
 import time
 import random
-import json
 from movies_storage import movies
 from datetime import datetime
 
@@ -28,7 +27,7 @@ menu = """
 [c] View rented movies
 [d] Foods & Drink
 [e] User
-[f] Exit & Save"""
+[f] Exit"""
 
 #Creating defs
 def loading(text="Loading", success=True):
