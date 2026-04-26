@@ -1,50 +1,50 @@
 
 #Create list
 foods = [
-    {"name": "Burger 🍔"}, # $8
-    {"name": "Pizza 🍕"}, # $12
-    {"name": "Hot Dog 🌭"}, # $5
-    {"name": "French Fries 🍟"}, # $4
-    {"name": "Ice Cream 🍨"}, # $6
-    {"name": "Chocolate Cake 🍰"}, # $7
-    {"name": "Salad 🥗"}, # $6
-    {"name": "Tacos 🌮"}, # $9
-    {"name": "Pancakes 🥞"}, # $7
-    {"name": "Waffles 🧇"}, # $7
-    {"name": "Donut 🍩"}, # $2
-    {"name": "Popcorn 🍿"}, # $4
-    {"name": "Sandwich 🥪"}, # $6
-    {"name": "Fried Rice 🍚"}, # $9
-    {"name": "Ramen 🍜"}, # $12
-    {"name": "Cupcake 🧁"}, # $3
-    {"name": "Burrito 🌯"}, # $10
-    {"name": "Croissant 🥐"}, # $4
-    {"name": "Bagel 🥯"}, # $3
-    {"name": "Pretzel 🥨"}, # $3
-    {"name": "Eggs & Bacon 🍳"}, # $8
-    {"name": "Toast 🍞"}, # $2
-    {"name": "Cheese Plate 🧀"}, # $7
-    {"name": "Onion Rings 🧅"}, # $4
-    {"name": "Chicken Nuggets 🍗"}, # $5
-    {"name": "BBQ Ribs 🍖"}, # $14
-    {"name": "Dumplings 🥟"}, # $9
-    {"name": "Spring Rolls 🥢"}, # $6
-    {"name": "Kebab 🍢"}, # $10
-    {"name": "Mashed Potatoes 🥔"}, # $5
+    {"name": "Burger 🍔", "price": 8.00},
+    {"name": "Pizza 🍕", "price": 12.00},
+    {"name": "Hot Dog 🌭", "price": 5.00},
+    {"name": "French Fries 🍟", "price": 4.00},
+    {"name": "Ice Cream 🍨", "price": 6.00},
+    {"name": "Chocolate Cake 🍰", "price": 7.00},
+    {"name": "Salad 🥗", "price": 6.00},
+    {"name": "Tacos 🌮", "price": 9.00},
+    {"name": "Pancakes 🥞", "price": 7.00},
+    {"name": "Waffles 🧇", "price": 7.00},
+    {"name": "Donut 🍩", "price": 2.00},
+    {"name": "Popcorn 🍿", "price": 4.00},
+    {"name": "Sandwich 🥪", "price": 6.00},
+    {"name": "Fried Rice 🍚", "price": 9.00},
+    {"name": "Ramen 🍜", "price": 12.00},
+    {"name": "Cupcake 🧁", "price": 3.00},
+    {"name": "Burrito 🌯", "price": 10.00},
+    {"name": "Croissant 🥐", "price": 4.00},
+    {"name": "Bagel 🥯", "price": 3.00},
+    {"name": "Pretzel 🥨", "price": 3.00},
+    {"name": "Eggs & Bacon 🍳", "price": 8.00},
+    {"name": "Toast 🍞", "price": 2.00},
+    {"name": "Cheese Plate 🧀", "price": 7.00},
+    {"name": "Onion Rings 🧅", "price": 4.00},
+    {"name": "Chicken Nuggets 🍗", "price": 5.00},
+    {"name": "BBQ Ribs 🍖", "price": 14.00},
+    {"name": "Dumplings 🥟", "price": 9.00},
+    {"name": "Spring Rolls 🥢", "price": 6.00},
+    {"name": "Kebab 🍢", "price": 10.00},
+    {"name": "Mashed Potatoes 🥔", "price": 5.00},
 
-    {"name": "Coffee ☕"}, # $3
-    {"name": "Orange Juice 🍊"}, # $4
-    {"name": "Soda 🥤"}, # $3
-    {"name": "Smoothie 🍓"}, # $5
-    {"name": "Energy Drink ⚡"}, # $4
-    {"name": "Water 💧"}, # $2
-    {"name": "Lemonade 🍋"}, # $4
-    {"name": "Tea 🍵"}, # $3
-    {"name": "Hot Chocolate 🍫"}, # $4
-    {"name": "Protein Shake 💪"}, # $6
-    {"name": "Coconut Water 🥥"}, # $5
-    {"name": "Apple Juice 🍎"}, # $4
-    {"name": "Grape Juice 🍇"}, # $4
-    {"name": "Mango Juice 🥭"}, # $5
-    {"name": "Milkshake 🍦"}, # $6
+    {"name": "Coffee ☕", "price": 3.00},
+    {"name": "Orange Juice 🍊", "price": 4.00},
+    {"name": "Soda 🥤", "price": 3.00},
+    {"name": "Smoothie 🍓", "price": 5.00},
+    {"name": "Energy Drink ⚡", "price": 4.00},
+    {"name": "Water 💧", "price": 2.00},
+    {"name": "Lemonade 🍋", "price": 4.00},
+    {"name": "Tea 🍵", "price": 3.00},
+    {"name": "Hot Chocolate 🍫", "price": 4.00},
+    {"name": "Protein Shake 💪", "price": 6.00},
+    {"name": "Coconut Water 🥥", "price": 5.00},
+    {"name": "Apple Juice 🍎", "price": 4.00},
+    {"name": "Grape Juice 🍇", "price": 4.00},
+    {"name": "Mango Juice 🥭", "price": 5.00},
+    {"name": "Milkshake 🍦", "price": 6.00},
 ]

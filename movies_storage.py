@@ -116,7 +116,7 @@ movies = [
     {"name": "Hobbs & Shaw", "genres": "Action 🧭", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "Madagascar", "genres": "Animation 🎨", "rating": 2, "total_stock": 5, "stock": 5},
     {"name": "The Fault in Our Stars", "genres": "Romance 💕", "rating": 2, "total_stock": 5, "stock": 5},
-    {"name": "Love Actually", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5, "favorite": True},
+    {"name": "Love Actually", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Notting Hill", "genres": "Romance 💕", "rating": 3, "total_stock": 5, "stock": 5},
     {"name": "Bohemian Rhapsody", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5, "award": True}, # 🏆
     {"name": "Rocketman", "genres": "Drama 🎭", "rating": 3, "total_stock": 5, "stock": 5},

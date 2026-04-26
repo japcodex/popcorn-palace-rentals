@@ -35,6 +35,8 @@ while True:
                         movie["stock"] += 1
                         user.movies.remove(movie)
                         clean()
+                        loading("Processing", True)
+                        clean()
                         attendant_message("💁", "success")
                     else:
                         clean()
@@ -43,21 +45,25 @@ while True:
                 else:
                     found = False
                     for movie in user.movies:
-                        if movie["name"].upper() == new_selec:
+                        if new_selec in movie["name"].upper():
                             found = True
                             movie["stock"] += 1
                             user.movies.remove(movie)
                             clean()
+                            loading("Processing", True)
+                            clean()
                             attendant_message("💁", "success")
                             break
                     if not found:
+                        clean()
+                        loading("Processing", False)
                         clean()
                         attendant_message("🙍", "error")
 
         case "c":
             if not user.movies:
                 clean()
-                attendant_message("🙍", "error")
+                attendant_message("🙍", "empty")
             else:
                 clean()
                 title("🎥", "Your Rented Movies")
@@ -70,7 +76,7 @@ while True:
             clean()
             title("🍽️", "Foods & Drinks")
             storage(foods, "name")
-            print("💁 -Select the food or drink you wish to return.")
+            print("💁 -Select the food or drink you wish to order.")
             print("You can type the name or index.")
             print("[E] For exit!")
             new_selec = input("\nType the name or number: \n➤ ").upper()
@@ -83,11 +89,17 @@ while True:
                 index = int(new_selec) - 1
                 if 0 <= index < len(foods):
                     food = foods[index]
-                    user.foods.append(food)
-                    user.history.append({**food, 'type': 'food'})
-                    clean()
-                    attendant_message("💁", "success")
+                    if confirm_purchase(food, "purchase"):
+                        user.balance -= food['price']
+                        user.foods.append(food)
+                        user.history.append({**food, 'type': 'food', 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
+                        clean()
+                        loading("Processing", True)
+                        clean()
+                        attendant_message("💁", "success")
                 else:
+                    clean()
+                    loading("Processing", False)
                     clean()
                     attendant_message("🙍", "error")
 
@@ -95,14 +107,20 @@ while True:
                 found = False
                 for food in foods:
                     if new_selec in food['name'].upper():
-                        user.foods.append(food)
-                        user.history.append({**food, 'type': 'food'})
-                        found = True
-                        clean()
-                        attendant_message("💁", "success")
-                        break
+                        if confirm_purchase(food, "purchase"):
+                            user.balance -= food['price']
+                            user.foods.append(food)
+                            user.history.append({**food, 'type': 'food', 'date': datetime.now().strftime("%Y-%m-%d %H:%M")})
+                            found = True
+                            clean()
+                            loading("Processing", True)
+                            clean()
+                            attendant_message("💁", "success")
+                            break
 
                 if not found:
+                    clean()
+                    loading("Processing", False)
                     clean()
                     attendant_message("🙍", "error")
 
