@@ -1,140 +1,207 @@
+<div align="center">
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=13&duration=3000&pause=1000&color=F5C518&center=true&vCenter=true&width=500&lines=Terminal-based+movie+rental+store+%F0%9F%8E%AC;Built+entirely+in+Python+%F0%9F%90%8D;Browse+%E2%80%A2+Rent+%E2%80%A2+Return+%E2%80%A2+Order+Food" alt="Typing SVG" />
+
+<br/>
+
 # 🍿 Popcorn Palace Rentals
 
-> A terminal-based movie rental store built entirely in Python — browse, rent, return, and order food, all from the command line.
+<p>
+  <img src="https://img.shields.io/badge/Python-3.10+-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" />
+  <img src="https://img.shields.io/badge/Version-Alpha%201.9-F5C518?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/Libraries-Standard%20Only-4CAF50?style=for-the-badge&logo=checkmarx&logoColor=white" />
+  <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge" />
+</p>
 
-This is my first Python project, built from scratch to practice core concepts like functions, classes, lists, dictionaries, control flow, and modular code organization.
+<p><em>My first Python project — a fully functional movie rental store running right in your terminal.</em></p>
+
+</div>
 
 ---
 
-## 📋 Features
+## 🎬 What is this?
+
+**Popcorn Palace Rentals** is a terminal-based movie rental store built from scratch in Python. You can browse a catalog of 151 films, rent them, return them, order food, manage your profile, and much more — all from the command line.
+
+Built to practice Python fundamentals: **functions, classes, lists, dictionaries, control flow, and modular file organization.**
+
+---
+
+## ✨ Features
+
+<table>
+<tr>
+<td width="50%">
 
 ### 🎬 Movies
-- Browse the full catalog of **151 movies** across **11 genres**
-- Filter by genre, rating (⭐ / ⭐⭐ / ⭐⭐⭐), or award-winning titles 🏆
-- Search by name (partial match supported — type `"dark"` to find `"The Dark Knight"`)
-- **Surprise Me** — get a random movie picked for you
-- Favorite movies with `fav` and reserve them with `res`
-- Real stock control — each title has limited copies
+- **151 titles** across 11 genres
+- Filter by genre, rating or award 🏆
+- Partial name search — `"dark"` finds `"The Dark Knight"`
+- **Surprise Me** 🎲 — random pick
+- Favorite with `fav`, reserve with `res`
+- Real per-title stock control 📦
 
-### 🛒 Renting
-- Select movies by index or by typing part of the name
-- Confirmation screen before renting — shows genre, rating, stock, price and balance
-- Balance system — each rental deducts from your account
-- Transaction loading animation ✅ / ❌
+</td>
+<td width="50%">
 
-### 📦 Returning
-- Return by index or partial name
-- Stock is automatically restored on return
+### 🛒 Renting & Returning
+- Select by number or partial name
+- Confirmation screen before every rental
+- Balance system — rentals deduct from account
+- Transaction animation ✅ / ❌
+- Return by number or partial name
+- Stock auto-restored on return
+
+</td>
+</tr>
+<tr>
+<td width="50%">
 
 ### 🍔 Foods & Drinks
-- Order from a menu of **45 items** (burgers, pizza, ramen, desserts and more)
-- Each item has a price — balance is checked before purchase
+- **45 items** — burgers, pizza, ramen, desserts...
+- Each item has a price
+- Balance checked before every purchase
 - Order by name or index
 
+</td>
+<td width="50%">
+
 ### 👤 User Profile
-- View your current rentals and order history
-- Favorites list and reservations
-- Account overview: balance, total rentals, food orders
+- Current rentals inventory
+- Full order & rental history with timestamps
+- Favorites and reservations lists
+- Account overview: balance, stats, history count
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 🗂️ Project Structure
 
 ```
-popcorn-palace-rentals/
+🍿 popcorn-palace-rentals/
 │
-├── store.py           # Main loop — entry point of the app
-├── defs.py            # All functions, classes and UI logic
-├── movies_storage.py  # Movie catalog (151 titles)
-└── foods_storage.py   # Food & drinks menu (45 items)
+├── 📄 store.py            # Main loop — entry point of the app
+├── 📄 defs.py             # All functions, classes and UI logic
+├── 📄 movies_storage.py   # Movie catalog (151 titles)
+└── 📄 foods_storage.py    # Food & drinks menu (45 items)
 ```
 
 ---
 
 ## 🚀 How to Run
 
-**Requirements:** Python 3.10 or higher (uses `match/case`)
+> **Requirements:** Python 3.10 or higher — the app uses `match/case` syntax.
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/popcorn-palace-rentals.git
+# 1. Clone the repository
+git clone https://github.com/japcodex/popcorn-palace-rentals.git
 
-# Navigate to the project folder
+# 2. Navigate to the project folder
 cd popcorn-palace-rentals
 
-# Run the app
+# 3. Run
 python store.py
 ```
 
-No external libraries needed — only Python's standard library (`os`, `time`, `random`, `json`, `datetime`).
+**No installations needed.** Uses only Python's standard library — `os`, `time`, `random`, `json`, `datetime`.
 
 ---
 
 ## 🎮 How to Use
 
-Once running, navigate using the letter keys shown in the menu:
+Navigate using the letter keys shown on screen at all times:
 
 ```
-[a] Available movies    → browse and rent
-[b] Return a movie      → return by name or number
-[c] View rented movies  → see your current rentals
-[d] Foods & Drink       → order snacks
-[e] User                → profile, history, favorites
-[f] Exit & Save
+╔══════════════════════════════════════╗
+║       🍿 POPCORN PALACE RENTALS      ║
+╠══════════════════════════════════════╣
+║  [a] Available movies                ║
+║  [b] Return a movie                  ║
+║  [c] View rented movies              ║
+║  [d] Foods & Drink                   ║
+║  [e] User                            ║
+║  [f] Exit & Save                     ║
+╚══════════════════════════════════════╝
 ```
 
-**Inside the movie browser:**
+**Inside the movie browser `[a]`:**
+
 ```
 [a] View all movies
-[b] Recommended ⭐⭐⭐
-[c] Surprise me 🎲
-[d] Hall of fame 🏆
-[e] Search by name
-[f] Search by genre
-[g] Filter by rating
-[h] Favorites ❤️
+[b] Recommended   ⭐⭐⭐
+[c] Surprise me   🎲         
+[d] Hall of fame  🏆
+[e] Search by name    🔍
+[f] Search by genre   🎭
+[g] Filter by rating  📊
+[h] Favorites         ❤️
+[i] Back             🔙                         
 ```
 
-**Renting tips:**
-- Type a number to select: `5`
-- Type part of the name: `inception`
-- Add `fav` to favorite: `5 fav`
-- Add `res` to reserve: `5 res`
+**Quick reference:**
+
+| Action | What to type |
+|:---|:---|
+| Rent movie #5 | `5` |
+| Rent by name | `inception` |
+| Favorite movie #5 | `5 fav` |
+| Unfavorite | `5 fav` again |
+| Reserve movie #5 | `5 res` |
+| Unreserve | `5 res` again |
+| Go back | `E` or `i` |
 
 ---
 
 ## 🎥 Movie Catalog
 
-| Genre | Titles |
-|---|---|
-| Drama 🎭 | 30 |
-| Horror 👻 | 22 |
-| Action 🧭 | 21 |
-| Animation 🎨 | 17 |
-| Sci-Fi 🚀 | 15 |
-| Thriller 😱 | 14 |
-| Comedy 😂 | 9 |
-| Romance 💕 | 9 |
-| Fantasy 🧙 | 8 |
-| Adventure 🧭 | 5 |
-| Documentary 🎥 | 1 |
+<div align="center">
 
-Includes **34 award-winning titles** such as The Dark Knight, Interstellar, Inception, Titanic, and The Lord of the Rings.
+| Genre | Titles | | Genre | Titles |
+|:---|:---:|---|:---|:---:|
+| Drama 🎭 | 30 | | Thriller 😱 | 14 |
+| Horror 👻 | 22 | | Comedy 😂 | 9 |
+| Action 🧭 | 21 | | Romance 💕 | 9 |
+| Animation 🎨 | 17 | | Fantasy 🧙 | 8 |
+| Sci-Fi 🚀 | 15 | | Adventure 🧭 | 5 |
+
+</div>
+
+Includes **34 award-winning titles** 🏆 — The Dark Knight, Interstellar, Inception, Titanic, The Lord of the Rings, and many more.
 
 ---
 
 ## 🧱 Built With
 
-- **Python 3.10+**
-- `match/case` for menu navigation
-- Classes (`User`) for state management
-- Modular structure across multiple files
-- Standard library only — no pip installs
+<p>
+  <img src="https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" />
+  <img src="https://img.shields.io/badge/match%2Fcase-Navigation-F5C518?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/OOP-User%20Class-3670A0?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Modular-4%20Files-4CAF50?style=for-the-badge" />
+</p>
+
+- **`match/case`** — Python 3.10+ structural pattern matching for menu navigation
+- **Classes** — `User` object manages state (rentals, balance, history, favorites)
+- **Modular structure** — logic, data, and entry point in separate files
+- **Standard library only** — zero external dependencies
 
 ---
 
 ## 👨‍💻 Author
 
-Built by Julio André.
+<div align="center">
 
-Feel free to open issues, suggest features, or just explore the code!
+**Julio André** · [@japcodex](https://github.com/japcodex)
+
+Sistemas de Informação · UTFPR · Paraná, Brasil
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/julioandrecimarosti/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/japcodex)
+
+<br/>
+
+*Feel free to open issues, suggest features, or just explore the code!*
+
+</div>
