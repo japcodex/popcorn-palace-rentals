@@ -47,8 +47,8 @@ def title(emoji, text):
 def clean():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def random_message(tipo):
-    mensagens = {
+def random_message(type_):
+    msg = {
         "success": [
             "Nice choice! Enjoy your movie",
             "Great pick! You're gonna love this one",
@@ -98,7 +98,7 @@ def random_message(tipo):
             "This section is empty for now\nTry again, please!"
         ],
     }
-    return random.choice(mensagens[tipo])
+    return random.choice(msg[type_])
 
 def attendant_message(emoji, type="welcome", custom_text=None):
     print("=" * width)
